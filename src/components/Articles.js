@@ -1,11 +1,9 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
-//import DeleteArticle from "./DeleteArticle";
 
-//import { useAuthState } from 'react-firebase-hooks/auth';
+import DeleteArticle from "./DeleteArticle";
 
-//import { Link } from "react-router-dom";
 const css = {
   grid: {
     display: "flex",
@@ -42,7 +40,7 @@ export default function Articles() {
                 <div className="row">
                   <div
                     className="card"
-                    style={{ margin: 1, width: "20rem", }}
+                    style={{ margin: 1, width: "20rem" }}
                     key={id}
                   >
                     <img
@@ -53,6 +51,8 @@ export default function Articles() {
                     <div className="card-body">
                       <h5 className="card-title"> {title}</h5>
                       <p className="card-text">{description}</p>
+                      <p>Creater At {createdAt.toDate().toDateString()}</p>
+                      <DeleteArticle id={id} imageUrl={imageUrl}/>
                     </div>
                   </div>
                 </div>
